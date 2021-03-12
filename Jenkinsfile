@@ -32,7 +32,7 @@ pipeline {
 					} 
 				} 
 			}
-		stage('Code Analysis Result){
+		stage('Code Analysis Result'){
 			steps {
 				timeout(time: 1, unit:'MINUTES') {
 					waitForQualityGate abortPipeline: true
