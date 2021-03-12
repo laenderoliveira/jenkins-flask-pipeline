@@ -4,7 +4,7 @@ WORKDIR simplePythonApplication/
 
 ADD . /simplePythonApplication/
 
-RUN apk add py3-pip py3-mysqlclient
+RUN apk add py3-pip py3-mysqlclient py3-nose
 
 RUN pip install -r requirements.txt
 
