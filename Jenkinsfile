@@ -45,7 +45,7 @@ pipeline {
 		}
 
 		cleanup {
-			sh "docker image rm ${CONTAINER_IMAGE}"
+			sh "docker image rm ${CONTAINER_NAME}"
 		}
 
 		always {
