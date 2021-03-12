@@ -29,9 +29,16 @@ pipeline {
 				   def sonarScannerPath = tool 'SonarScanner2' withSonarQubeEnv('SonarQube'){ 		
 					   sh "${sonarScannerPath}/bin/sonar-scanner -Dsonar.projectKey=simple-flask-app -Dsonar.sources=." 
 					   } 
-					   } 
-					   } 
-					   }
+					} 
+				} 
+			}
+		stage('Code Analysis Result){
+			steps {
+				timeout(time: 1, unit:'MINUTES') {
+					waitForQualityGate abortPipeline: true
+				}
+			}
+		}
 
 	}
 	post {
