@@ -24,7 +24,20 @@ pipeline {
 	  }
 	}
 	post {
+
 		success {
+			echo "Pipeline finalizado com sucesso!!!!"
+		}
+
+		failure {
+			echo " Pipeline erro"
+		}
+
+		cleanup {
+			sh "docker image rm ${CONTAINER_IMAGE}"
+		}
+
+		always {
 			junit 'nosetests.xml'
 		}
 	}
