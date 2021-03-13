@@ -64,6 +64,7 @@ pipeline {
 		}
 
 		cleanup {
+			echo "Cleanup"
 			//sh "docker image rm ${CONTAINER_NAME}"
 		}
 
