@@ -26,22 +26,22 @@ pipeline {
 	    }
 	  }
 
-	  // stage('Code Analysis'){ 
-//		   steps{ 
-//			   script{ 
-//				   def sonarScannerPath = tool 'SonarScanner' withSonarQubeEnv('SonarQube'){ 		
-//					   sh "${sonarScannerPath}/bin/sonar-scanner -Dsonar.projectKey=simple-flask-app -Dsonar.sources=." 
-//					   } 
-//					} 
-//				} 
-//			}
-//		stage('Code Analysis Result'){
-//			steps {
-//				timeout(time: 1, unit:'MINUTES') {
-//					waitForQualityGate abortPipeline: true
-//				}
-//			}
-//		}
+	     stage('Code Analysis'){ 
+		   steps{ 
+			   script{ 
+				   def sonarScannerPath = tool 'SonarScanner' withSonarQubeEnv('SonarQube'){ 		
+					   sh "${sonarScannerPath}/bin/sonar-scanner -Dsonar.projectKey=simple-flask-app -Dsonar.sources=." 
+					   } 
+					} 
+				} 
+		}
+		stage('Code Analysis Result'){
+			steps {
+				timeout(time: 1, unit:'MINUTES') {
+					waitForQualityGate abortPipeline: true
+				}
+			}
+		}
 
 		stage("Nexus - Saving Artifact"){
  			steps{
