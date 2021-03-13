@@ -26,7 +26,7 @@ pipeline {
 	   stage('Code Analysis'){ 
 		   steps{ 
 			   script{ 
-				   def sonarScannerPath = tool 'SonarScanner2' withSonarQubeEnv('SonarQube'){ 		
+				   def sonarScannerPath = tool 'SonarScanner' withSonarQubeEnv('SonarQube'){ 		
 					   sh "${sonarScannerPath}/bin/sonar-scanner -Dsonar.projectKey=simple-flask-app -Dsonar.sources=." 
 					   } 
 					} 
