@@ -1,10 +1,5 @@
 from project import db
 import datetime
-#from project import engine, Base
-#from sqlalchemy.ext.declarative import declarative_base
-#from sqlalchemy import ForeignKey,Column, Integer,String, Date
-#from sqlalchemy.orm import relationship
-
 
 
 class Courses(db.Model):
