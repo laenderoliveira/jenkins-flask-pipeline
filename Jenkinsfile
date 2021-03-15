@@ -64,8 +64,7 @@ pipeline {
  				      		imagetst = docker.image("${CONTAINER_NAME}")
 							imagetst.pull()
 							sh"""
-								sed 's|IMAGE|${NEXUS_REPOSITORY}/${CONTAINER_NAME}|g' docker-compose
-.yml > docker-compose-homolog.yml
+								sed 's|IMAGE|${NEXUS_REPOSITORY}/${CONTAINER_NAME}|g' docker-compose.yml>docker-compose-homolog.yml
 								"""
 							sh "docker stack deploy -c docker-compose-homolog.yml courseCatalog"
  						}
