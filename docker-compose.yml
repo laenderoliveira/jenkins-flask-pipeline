@@ -2,8 +2,8 @@ version: '3'
 
 services:
   web:
-    container_name: simplePythonFlask
-    image: simple-python-application
+    container_name: courseCatalog
+    image: IMAGE
     ports:
       - 5000:5000
     depends_on:
@@ -11,8 +11,8 @@ services:
       - 'web_initiate_db'
 
   web_initiate_db:
-    container_name: simple-python-flask_init_db
-    image: simple-python-application
+    container_name: courseCatalog_init_db
+    image: IMAGE
     entrypoint: ["python3","create_db.py"]
     depends_on:
     - 'mariadb'

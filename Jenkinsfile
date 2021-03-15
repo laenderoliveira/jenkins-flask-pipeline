@@ -72,6 +72,18 @@ pipeline {
 				 }
 			 }
 		 }
+
+		 stage("Functional Testing"){
+			steps{
+				script{
+					sh "sleep 30"
+					image.inside(){
+						sh "python3 test_functional.py"
+					}
+				}
+			}
+		}
+
 	}
 	post {
 
