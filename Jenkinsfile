@@ -59,9 +59,9 @@ pipeline {
 		 stage("Deploy to HOMLOG") {
 			 steps {
 				 script {
-					 docker.withServer($"{HOMOLOG}") {
+					 docker.withServer("${HOMOLOG}") {
 						 docker.withRegistry("${DOCKER_REGISTRY}", "8f6051d4-fd33-445e-9973-b96cc9118fef"){
- 				      		imagetst = docker.image("$"{CONTAINER_NAME}")
+ 				      		imagetst = docker.image("${CONTAINER_NAME}")
 							imagetst.pull()
  						}
 					}
