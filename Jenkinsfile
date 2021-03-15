@@ -13,7 +13,7 @@ pipeline {
 	  HTTP_PROTOCOL="http://"
 	  NEXUS_REPOSITORY="192.168.88.20:8082"
       DOCKER_REGISTRY="${HTTP_PROTOCOL}${NEXUS_REPOSITORY}"
-	  HOMLOG="tcp://192.168.88.30:2375"
+	  HOMOLOG="tcp://192.168.88.30:2375"
 	  PROD="tcp://192.168.88.40:2375"
 	}
 	stages{
@@ -63,6 +63,11 @@ pipeline {
 						 docker.withRegistry("${DOCKER_REGISTRY}", "8f6051d4-fd33-445e-9973-b96cc9118fef"){
  				      		imagetst = docker.image("${CONTAINER_NAME}")
 							imagetst.pull()
+							sh"""
+								sed ’s|IMAGE|${NEXUS_REPOSITORY}/${CONTAINER_IMAGE}|g’ docker-compose
+.yml > docker-compose-homolog.yml
+								"""
+							sh "docker stack deploy -c docker-compose-homolog.yml courseCatalog"
  						}
 					}
 				 }
